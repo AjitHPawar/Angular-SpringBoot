@@ -1,0 +1,24 @@
+<h3>Admin Dashboard</h3>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th [hidden]="'true'">User Id</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Contact</th>
+      <th>User Type</th>
+      <th>Username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <th [hidden]="'true'">{{ user.id }}</th>
+      <th>{{ user.name }}</th>
+      <th>{{ user.email }}</th>
+      <th>{{ user.contact }}</th>
+      <th>{{ user.usertype }}</th>
+      <th>{{ user.username }}</th>
+    </tr>
+  </tbody>
+</table>

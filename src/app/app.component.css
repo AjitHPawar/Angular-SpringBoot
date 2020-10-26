@@ -1,0 +1,13 @@
+ng-sidebar-container {
+  height: 100vh;
+}
+::ng-deep .ng-sidebar {
+  background-color: lightcyan;
+  width: 300px;
+  padding: 1em 1em;
+  box-shadow: 0 0 2.5em rgba(85, 85, 85, 0.5);
+}
+.side {
+  background-color: darkcyan;
+  color: seagreen;
+}

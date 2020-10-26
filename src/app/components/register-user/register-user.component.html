@@ -1,0 +1,180 @@
+<div class="row">
+  <div class="col-lg-5 m-auto bg-dark">
+    <div class="card m-5">
+      <div class="card-title text-center mt-3"><h3>Register User</h3></div>
+      <div class="card-body">
+        <form #userRegistrationForm="ngForm">
+          <small *ngIf="message" class="text-danger">{{ message }}</small>
+          <div class="form-group">
+            <label [hidden]="true">Id</label>
+            <input
+              type="hidden"
+              name="id"
+              class="form-control"
+              placeholder="User Id"
+              [(ngModel)]="user.id"
+            />
+          </div>
+          <div class="form-group">
+            <label>Name</label>
+            <input
+              type="text"
+              name="name"
+              class="form-control"
+              placeholder="Name"
+              [(ngModel)]="user.name"
+              #name="ngModel"
+              [class.is-invalid]="name.invalid && name.touched"
+              required
+            />
+            <small class="text-danger" *ngIf="name.invalid && name.touched"
+              >Name is required</small
+            >
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              class="form-control"
+              placeholder="Email"
+              [(ngModel)]="user.email"
+              #email="ngModel"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+              [class.is-invalid]="email.invalid && email.touched"
+              required
+            />
+            <div
+              *ngIf="email.invalid && (email.dirty || email.touched)"
+              class="text-danger"
+            >
+              <small *ngIf="email.errors?.required">
+                Email field can't be blank
+              </small>
+              <small *ngIf="email.errors?.pattern && email.touched">
+                The email id doesn't seem right
+              </small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Contact</label>
+            <input
+              type="text"
+              name="contact"
+              class="form-control"
+              placeholder="Contact"
+              [(ngModel)]="user.contact"
+              #contact="ngModel"
+              [class.is-invalid]="contact.invalid && contact.touched"
+              required
+              pattern="\d{10}$"
+            />
+            <div
+              *ngIf="contact.invalid && (contact.dirty || contact.touched)"
+              class="text-danger"
+            >
+              <small *ngIf="contact.errors?.required">
+                Contact field can't be blank
+              </small>
+              <small *ngIf="contact.errors?.pattern && contact.touched">
+                The Contact doesn't seem right
+              </small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>User Type</label>
+            <select
+              class="form-control"
+              name="usertype"
+              ngModel
+              #usertype="ngModel"
+              [class.is-invalid]="isUserTypeValid && usertype.touched"
+              (blur)="validateUserType(usertype.value)"
+              (change)="validateUserType(usertype.value)"
+            >
+              <option value="default">Select User Type</option>
+              <option *ngFor="let usert of userTypes" [value]="usert">
+                {{ usert }}
+              </option>
+            </select>
+            <small
+              class="text-danger"
+              *ngIf="isUserTypeValid && usertype.touched"
+              >Select User Type</small
+            >
+          </div>
+          <div class="form-group">
+            <label>User Name</label>
+            <input
+              type="text"
+              name="username"
+              [(ngModel)]="user.username"
+              class="form-control"
+              placeholder="Set User Name"
+              #username="ngModel"
+              [class.is-invalid]="username.invalid && username.touched"
+              required
+            />
+            <small
+              class="text-danger"
+              *ngIf="username.invalid && username.touched"
+              >Username is required</small
+            >
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              [(ngModel)]="user.password"
+              class="form-control"
+              placeholder="Set Password"
+              #password="ngModel"
+              minlength="8"
+              [class.is-invalid]="password.invalid && password.touched"
+              required
+            />
+            <div
+              *ngIf="password.invalid && (password.dirty || password.touched)"
+              class="text-danger"
+            >
+              <small *ngIf="password.errors?.required">
+                Password field can't be blank
+              </small>
+              <small *ngIf="password.errors?.minlength && password.touched">
+                Password size should be greater than 8
+              </small>
+            </div>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              name="isActive"
+              [(ngModel)]="user.isActive"
+              value="false"
+              #isActive="ngModel"
+              [class.is-invalid]="isActive.invalid && isActive.touched"
+              required
+            />
+            isActive
+          </div>
+          <div>
+            <button
+              class="btn btn-success mt-3"
+              (click)="registerUser()"
+              [disabled]="userRegistrationForm.form.invalid"
+            >
+              Register
+            </button>
+            <button
+              class="btn btn-primary mt-3 float-right"
+              (click)="userRegistrationForm.reset()"
+            >
+              Reset
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

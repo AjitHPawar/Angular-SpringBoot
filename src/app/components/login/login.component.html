@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-lg-5 m-auto bg-dark">
+    <div class="card m-5">
+      <div class="card-title text-center mt-3">
+        <i class="fa fa-university fa-5x"></i>
+      </div>
+      <div class="card-body">
+        <form #loginForm="ngForm">
+          <small *ngIf="loginMsg" class="alert alert-danger">{{
+            loginMsg
+          }}</small>
+          <div class="input-group mg-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text"
+                ><i class="fa fa-user fa-2x"></i
+              ></span>
+            </div>
+            <input
+              type="text"
+              name="username"
+              class="form-control py-4"
+              placeholder="User Name"
+              [(ngModel)]="user.username"
+              required
+              #username="ngModel"
+              [class.is-invalid]="username.invalid && username.touched"
+            />
+          </div>
+          <div class="input-group mg-3 mt-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text"
+                ><i class="fa fa-lock fa-2x"></i
+              ></span>
+            </div>
+            <input
+              type="password"
+              name="password"
+              class="form-control py-4"
+              placeholder="User Password"
+              [(ngModel)]="user.password"
+              required
+              #password="ngModel"
+              [class.is-invalid]="password.invalid && password.touched"
+            />
+          </div>
+          <div>
+            <button
+              class="btn btn-success mt-3"
+              (click)="loginUser()"
+              [disabled]="loginForm.form.invalid"
+            >
+              Login User
+            </button>
+            <button
+              class="btn btn-primary mt-3 float-right"
+              (click)="openRegistration()"
+            >
+              Register
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

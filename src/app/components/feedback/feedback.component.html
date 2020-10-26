@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-lg-5 m-auto bg-dark">
+    <div class="card m-1">
+      <div class="card-title text-center mt-3"><h3>User Feedback</h3></div>
+      <div class="card-body">
+        <form #feedbackForm="ngForm" (submit)="sendFeedback()">
+          <small class="text text-danger">{{ errorMSg }}</small>
+          <div class="form-group">
+            <label>Email</label>
+            <input
+              type="email"
+              name="emailTo"
+              class="form-control"
+              placeholder="Email"
+              [(ngModel)]="feedback.emailTo"
+            />
+          </div>
+          <div class="form-group">
+            <label>First Name</label>
+            <input
+              type="text"
+              name="subject"
+              class="form-control"
+              placeholder="Subject"
+              [(ngModel)]="feedback.subject"
+            />
+          </div>
+          <div class="form-group">
+            <label>Feedback Text</label>
+            <textarea
+              name="messageBody"
+              class="form-control"
+              placeholder="Enter Text Here"
+              rows="5"
+              cols="30"
+              rows="10"
+              [(ngModel)]="feedback.messageBody"
+            ></textarea>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-success mt-3">
+              <i class="fa fa-envelope-o"></i>
+              Send Feedback
+            </button>
+            <button
+              class="btn btn-primary mt-3 float-right"
+              (click)="feedbackForm.reset()"
+            >
+              Reset
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

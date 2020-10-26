@@ -1,0 +1,32 @@
+<!-- This is navbar -->
+<div class="container-fluid p-3" style="background-color: darkkhaki">
+  <div class="row">
+    <div class="col-3 text-light font-italic d-flex">
+      <i
+        *ngIf="sidebarIconVisibility"
+        class="fa fa-bars fa-2x"
+        (click)="toggleSidebar()"
+      ></i>
+
+      <h3 class="title ml-2">
+        NG-SOFT <i class="fa fa-book" style="color: blueviolet"></i>
+      </h3>
+    </div>
+    <div class="col-9 d-flex justify-content-end">
+      <div
+        *ngIf="loginVisiblity"
+        class="btn btn-lg btn-outline-info ml-2"
+        (click)="openLogin()"
+      >
+        Login
+      </div>
+      <div
+        *ngIf="logoutVisibility"
+        class="btn btn-lg btn-outline-success ml-2"
+        (click)="openLogout()"
+      >
+        Log Out
+      </div>
+    </div>
+  </div>
+</div>
