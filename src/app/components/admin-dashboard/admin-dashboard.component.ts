@@ -9,11 +9,12 @@ import { UserRegisterService } from 'src/app/services/user-register.service';
 })
 export class AdminDashboardComponent implements OnInit {
   users: User[] = [];
-  constructor(private userservice: UserRegisterService) {}
+  constructor(private userservice: UserRegisterService) { }
 
   ngOnInit(): void {
     this.userservice.getUserList().subscribe((userData) => {
       this.users = userData;
+
     });
   }
 }
